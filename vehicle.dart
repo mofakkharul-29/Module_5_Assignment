@@ -1,5 +1,6 @@
 int main() {
-  Car car = Car(25);
+  Car car = Car();
+  car.setSpeed = 120;
   car.move();
 
   return 0;
@@ -7,19 +8,19 @@ int main() {
 
 abstract class Vehicle {
   int? _speed;
-  Vehicle(this._speed);
 
   void move();
 
-  // set setSpeed(int speed) {
-  //   this._speed = speed;
-  // }
+  set setSpeed(int speed) {
+    _speed = speed;
+  }
+
+  int? get speed => _speed;
 }
 
 class Car extends Vehicle {
-  Car(int? speed) : super(speed);
   @override
   void move() {
-    print("The car is moving at ${super._speed} km/h");
+    print("The car is moving at ${super.speed} km/h");
   }
 }
